@@ -1,4 +1,4 @@
-Country,Armed Forces size,Birth Rate,Co2-Emissions,GDP,Life expectancy,Population,Population: Labor force participation (%),Latitude,Longitude
+Country,Armed_Forces_size,Birth_Rate,Co2-Emissions,GDP,Life expectancy,Population,Population: Labor force participation (%),Latitude,Longitude
 Afghanistan,"323,000",32.49,"8,672","$19,101,353,833 ",64.5,"38,041,754",48.90%,33.93911,67.709953
 Albania,"9,000",11.78,"4,536","$15,278,077,447 ",78.5,"2,854,191",55.70%,41.153332,20.168331
 Algeria,"317,000",24.28,"150,006","$169,988,236,398 ",76.7,"43,053,054",41.20%,28.033886,1.659626
