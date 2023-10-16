@@ -1,0 +1,78 @@
+{
+    "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    "hconcat":[
+        {
+            "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/global-data-on-sustainable-energy.csv"},
+            "mark":{"type":"line", "point": true},
+            "transform": [
+                {"calculate": "if(datum.gdp_per_capita < 1135, 'low income', if(datum.gdp_per_capita < 4465, 'lower-middle income', if(datum.gdp_per_capita <13845, 'upper-middle income', 'high income')))", "as": "GDP level" },        
+                {"aggregate": [{
+                    "op": "median",
+                    "field": "Renewable energy share in the total final energy consumption (%)",
+                    "as": "Median renewable energy share in the total final energy consumption(%)"
+                }], 
+                "groupby": ["GDP level", "Year"]
+                },
+                {"filter": "datum.Year <2020"}
+            ],
+            "encoding": {
+                "x":{
+                    "field": "Year",
+                    "type": "quantitative",
+                    "axis": {"format":""}
+                },
+                "y": {
+                    "field":"Median renewable energy share in the total final energy consumption(%)",
+                    "type": "quantitative"
+                },
+                "color":{
+                    "field": "GDP level",
+                    "type": "nominal",
+                    "sort": ["low income", "lower-middle income", "upper-middle income", "high income"]
+                },
+                "tooltip": [
+                    {"field": "Year", "type": "quantitative", "format":""},
+                    {"field": "Median renewable energy share in the total final energy consumption(%)", "format": "," },
+                    {"field": "GDP level", "type": "nominal"}
+                ]
+            }
+        },
+        {
+            "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/global-data-on-sustainable-energy.csv"},
+            "mark":{"type":"line", "point": true},
+            "transform": [
+                {"calculate": "if(datum.gdp_per_capita < 1135, 'low income', if(datum.gdp_per_capita < 4465, 'lower-middle income', if(datum.gdp_per_capita <13845, 'upper-middle income', 'high income')))", "as": "GDP level" },        
+                {"aggregate": [{
+                    "op": "median",
+                    "field": "Low-carbon electricity (% electricity)",
+                    "as": "Median Low-carbon electricity (% electricity)"
+                }], 
+                "groupby": ["GDP level", "Year"]
+                },
+                {"filter": "datum.Year <2020"}
+            ],
+            "encoding": {
+                "x":{
+                    "field": "Year",
+                    "type": "quantitative",
+                    "axis": {"format":""}
+                },
+                "y": {
+                    "field":"Median Low-carbon electricity (% electricity)",
+                    "type": "quantitative"
+                },
+                "color":{
+                    "field": "GDP level",
+                    "type": "nominal",
+                    "sort": ["low income", "lower-middle income", "upper-middle income", "high income"]
+                },
+                "tooltip": [
+                    {"field": "Year", "type": "quantitative", "format":""},
+                    {"field": "Median Low-carbon electricity (% electricity)", "format": "," },
+                    {"field": "GDP level", "type": "nominal"}
+                ]
+            }
+        }
+    ]
+}   
