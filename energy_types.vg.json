@@ -34,12 +34,16 @@
                     "scale": {
                         "domain": ["coal", "petroleum_n_other_liquids", "natural_gas", "nuclear", "renewables_n_other"],
                         "range": ["#CC0000","#FF5733" ,"#33FF57", "#00CC00" ,"#008000"]
-                    }
+                    },
+                    "title": "Energy type"
                 },
                 "tooltip": [
                     {"field": "Energy_type", "type": "nominal"},
                     {"field": "Energy_consumption", "type": "quantitative", "title": "Energy consumption(Quad)"}
-                ]
+                ],
+                "text": {
+                    "field": "Energy_type", "type": "nominal"
+                }
                 
             }
         },
@@ -69,12 +73,18 @@
                     "aggregate": "sum",
                     "field": "Energy_consumption",
                     "type": "quantitative",
-                    "axis": {"grid": false, "ticks": false}
+                    "axis": {"grid": false, "ticks": false},
+                    "title": "Energy consumption"
                 },
                 "color": {
                     "field": "Energy_type",
                     "type": "nominal"
-                }
+                },
+                "tooltip": [
+                    {"field": "Year", "type": "quantitative"},
+                    {"field":"Energy_type", "type": "nominal"},
+                    {"field": "Energy_consumption", "type": "quantitative"}
+                ]
             }
         }
 
