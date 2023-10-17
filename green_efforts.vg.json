@@ -1,8 +1,9 @@
 {
     "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
-    
+    "config": {"view": {"stroke": "transparent"}},
     "hconcat":[
-        {
+        {   
+            "width": "container",
             "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/global-data-on-sustainable-energy.csv"},
             "mark":{"type":"line", "point": true},
             "transform": [
@@ -20,16 +21,21 @@
                 "x":{
                     "field": "Year",
                     "type": "quantitative",
-                    "axis": {"format":""}
+                    "axis": {"format":"", "grid": false, "ticks": false}
                 },
                 "y": {
                     "field":"Median renewable energy share in the total final energy consumption(%)",
-                    "type": "quantitative"
+                    "type": "quantitative",
+                    "axis": {"grid": false, "ticks": false}
                 },
                 "color":{
                     "field": "GDP level",
                     "type": "nominal",
-                    "sort": ["low income", "lower-middle income", "upper-middle income", "high income"]
+                    "sort": ["low income", "lower-middle income", "upper-middle income", "high income"],
+                    "scale": {
+                        "domain": ["low income", "lower-middle income", "upper-middle income", "high income"],
+                        "range": ["#D4E4FF", "#7BA6FF", "#3E78FF", "#0033CC"]
+                    }
                 },
                 "tooltip": [
                     {"field": "Year", "type": "quantitative", "format":""},
@@ -39,6 +45,7 @@
             }
         },
         {
+            "width": "container",
             "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/global-data-on-sustainable-energy.csv"},
             "mark":{"type":"line", "point": true},
             "transform": [
@@ -56,11 +63,12 @@
                 "x":{
                     "field": "Year",
                     "type": "quantitative",
-                    "axis": {"format":""}
+                    "axis": {"format":"", "ticks": false, "grid": false}
                 },
                 "y": {
                     "field":"Median Low-carbon electricity (% electricity)",
-                    "type": "quantitative"
+                    "type": "quantitative",
+                    "axis": {"grid": false, "ticks": false}
                 },
                 "color":{
                     "field": "GDP level",

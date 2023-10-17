@@ -1,0 +1,82 @@
+{
+    "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {"view": {"stroke": "transparent"}},
+    "params": [
+        {
+            "name": "year_Filter",
+            "value": 2019,
+            "bind":{
+                "input": "range",
+                "min": 2000,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "vconcat":[
+        {   "width": 600,  
+            "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/energy.csv"},
+            "transform": [
+                {"filter": "datum.Year == year_Filter"},
+                {"filter": "datum.Energy_type != 'all_energy_types'"},
+                {"filter": "datum.Country == 'World'"}
+            ],
+            "mark": {"type": "arc", "innerRadius": 50},
+            "encoding": {
+                "theta": {
+                    "field": "Energy_consumption",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "field": "Energy_type",
+                    "type": "nominal",
+                    "sort": ["coal", "petroleum_n_other_liquids", "natural_gas", "nuclear", "renewables_n_other"],
+                    "scale": {
+                        "domain": ["coal", "petroleum_n_other_liquids", "natural_gas", "nuclear", "renewables_n_other"],
+                        "range": ["#CC0000","#FF5733" ,"#33FF57", "#00CC00" ,"#008000"]
+                    }
+                },
+                "tooltip": [
+                    {"field": "Energy_type", "type": "nominal"},
+                    {"field": "Energy_consumption", "type": "quantitative", "title": "Energy consumption(Quad)"}
+                ]
+                
+            }
+        },
+        {   "width": 600, 
+            "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/energy.csv"},
+            "params": [
+                {
+                    "name": "brushing",
+                    "select": {
+                        "type": "point",
+                        "encodings": ["x"]
+                    }
+                }
+            ],
+            "transform": [
+                {"filter": "datum.Energy_type != 'all_energy_types'"},
+                {"filter": "datum.Country == 'World'"}
+            ],
+            "mark": {"type": "area"},
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "quantitative",
+                    "axis": {"format": "", "grid": false, "ticks": false}
+                },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Energy_consumption",
+                    "type": "quantitative",
+                    "axis": {"grid": false, "ticks": false}
+                },
+                "color": {
+                    "field": "Energy_type",
+                    "type": "nominal"
+                }
+            }
+        }
+
+    ]
+}

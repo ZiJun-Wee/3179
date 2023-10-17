@@ -16,10 +16,10 @@
   <!-- Google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" media="all">
 
 
 </head>
@@ -31,24 +31,24 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Multiple Visualisations</h1>
-        <p>This page demonstrates how you can use pure.css grid for your layout.</p>
+        <h1>World efforts to reduce carbon emissions.</h1>
+        <p>With global warming becoming an increasingly pressing issue in the world today, this visualisation
+            aims to put into perspective how are we doing currently.</p>
       </div>
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-2">
+      <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>Two Columns Layout</h2>
-          <p>The first column contains text and the second column contains a visualisation.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+          <h2>Most current global CO2 Emissions</h2>
+          <p>The choropleth map on the right portrays the latest CO2 emissions per capita from 2023. 
+            As seen from the projection, the distribution of CO2 per capita is not evenly distributed across
+        different countries and different regions. </p>
         </div>
       </div>
-      <div class="pure-u-1-2">
+      <div class="pure-u-2-3">
         <div id="vis1" class="vis-container"></div>
       </div>
     </div>
@@ -58,17 +58,15 @@
     <div class="pure-g">
       <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>Three Equal Columns</h2>
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat
-            sed. Egestas purus viverra accumsan in nisl. Egestas purus viverra accumsan in nisl.</p>
+          <h2>Relationship between non-renewable forms of energy and CO2</h2>
+          <p>There is a positive correlation between the use of non-renewable forms of energy(such as fossil fuels) and
+            the CO2 emissions. However, income level does not seem to have a relationship with the level of CO2 emissions,
+            despite the countries having the means to pursue better ways to produce energy and reduce their CO2 emissions.
+          </p>
         </div>
       </div>
-      <div class="pure-u-1-3">
-        <div id="vis4" class="vis-container"></div>
-      </div>
-      <div class="pure-u-1-3" style="width: 31.5%;">
-        <div id="vis3" class="vis-container" style="margin-left: 15px;"></div>
+      <div class="pure-u-1-2">
+        <div id="vis2" class="vis-container"></div>
       </div>
 
     </div>
@@ -76,34 +74,61 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
+        <div class="pure-u-2-3">
+        <div id="vis4" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+        <div class="description description-right">
+            <h2>Global energy consumption breakdown</h2>
+            <p>There is a noticeable trend towards a growing share of energy consumption derived 
+                from low-carbon sources. Renewable energy and natural gas consumption have experienced 
+                a significant increase, while the use of energy generated from petroleum, coal, 
+                and similar fossil fuels has declined. However, it's important to note that despite 
+                these positive shifts, the majority of global energy consumption still originates from non low-carbon methods of production
+            </p>
+        </div>
+        </div>
+
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
       <div class="pure-u-2-3">
-        <div id="vis2" class="vis-container"></div>
+        <div id="vis3" class="vis-container"></div>
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
-          <h2>First and Second Columns Combined</h2>
-          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          <h2>Varying efforts to move away from non-renewable forms of energy</h2>
+          <p>
+            There is an effort by countries in the higher income groups to move away from non-renewable forms of
+             energy. Seen on left, we can see that there is a slight upwards trend in the share of renewable energy in the total energy consumption for every income group
+            except for the low income group.
+          </p>
+
+          <p>
+            This is reinforced by how the efforts to move towards low carbon electricity has been led by higher income countries.
+            Low carbon electricity is classified as electricity produced from renewable sources or nuclear plants. As seen in the 
+            the visualisation, the countries in the upper-middle and high income group have moved towards switching to low carbon electricity while
+            the countries in the lower income groups seem to be moving away from the low carbon energy. 
+          </p>
         </div>
       </div>
 
     </div>
     <!-- end pure grid group -->
 
-    <div class="pure-g">
-      <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by <a href="https://fit3179.github.io/Vega-Lite/" target="_blank">FIT3179
-            Teaching Team</a>. The datasource is <a href="#" target=" _blank">some data repository online</href>.</p>
-      </div>
-    </div>
+
 
 
   </div> <!-- end page -->
 
   <script type="text/javascript">
-    var specVis1 = "./normalised-stacked-bars-responsive.json";
-    var specVis2 = "./line-chart-responsive.json";
+    var specVis1 = "./latest_emissions.vg.json";
+    var specVis2 = "./emissions.vg.json";
+    var specVis3 = "./green_efforts.vg.json";
+    var specVis4 = "./energy_types.vg.json";
+
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
@@ -111,11 +136,11 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis3', specVis1, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis4', specVis2, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>

@@ -1,0 +1,73 @@
+{
+    "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width":600,
+    "config": {"view": {"stroke": "transparent"}},
+    "data": {"url": "https://raw.githubusercontent.com/ZiJun-Wee/3179/Assignment-2/global-data-on-sustainable-energy.csv"},
+    "transform": [
+        {"filter": "datum.Value_co2_emissions_kt_by_country > 0"},
+        {"filter": "datum.gdp_per_capita >0"},
+        {"filter": "datum.Year == year_Filter"},
+        {"calculate": "if(datum.gdp_per_capita < 1135, 'low income', if(datum.gdp_per_capita < 4465, 'lower-middle income', if(datum.gdp_per_capita <13845, 'upper-middle income', 'high income')))", "as": "GDP level" }
+    ],
+    "params": [
+        {
+            "name": "incomeHighlight",
+            "select": {"type": "point", "fields": ["GDP level"]},
+            "bind":"legend"
+        },
+        {
+            "name": "grid",
+            "select":"interval",
+            "bind":"scales"
+        },
+        {
+            "name": "year_Filter",
+            "value": 2019,
+            "bind":{
+                "input": "range",
+                "min": 2000,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "mark": {"type": "circle" },
+    "encoding": {
+        "y" :{
+            "field":"Electricity from fossil fuels (TWh)", 
+            "type": "quantitative",
+            "axis": {"grid": false}
+        },
+        "x": {
+            "field":"Value_co2_emissions_kt_by_country", 
+            "type": "quantitative",
+            "scale": {"type": "log"},
+            "axis": {"grid": false}
+            
+        },
+        "color": {
+            "field": "GDP level", 
+            "type": "nominal",
+            "sort": ["low income", "lower-middle income", "upper-middle income", "high income"],
+            "scale": {
+                "domain": ["low income", "lower-middle income", "upper-middle income", "high income"],
+                "range": ["#D4E4FF", "#7BA6FF", "#3E78FF", "#0033CC"]
+            }
+        },
+        "size": {
+            "field": "gdp_per_capita", 
+            "type": "quantitative"   
+        },
+        "opacity":{
+            "condition": {"param": "incomeHighlight", "value": 0.6},
+            "value": 0.2
+        },
+        "tooltip":[
+            {"field": "Country", "type": "nominal"},
+            {"field": "Value_co2_emissions_kt_by_country", "type": "quantitative", "title": "CO2 emissions kT by country", "format": ","},
+            {"field": "Electricity from fossil fuels (TWh)", "type": "quantitative", "format": ","},
+            {"field": "gdp_per_capita", "type": "quantitative", "format": ",", "title": "GDP per capita"}
+        ]
+    }           
+}
