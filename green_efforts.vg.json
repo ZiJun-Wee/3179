@@ -1,6 +1,9 @@
 {
     "$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
     "config": {"view": {"stroke": "transparent"}},
+    "resolve": {"scale": {
+        "y":"shared"
+    }},
     "hconcat":[
         {   
             "width": "container",
